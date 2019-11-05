@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Příklad použití modulu spaserver</title>
+    <script>
+        const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
+        function ukazSeznam() {
+            let url = `${HOST}/list`;
+            fetch(url).then(function(response) {
+                response.text().then(function(text) {
+                    let obj = JSON.parse(text);
+                    let s = "";
+                    for (let o of obj.list) {
+                        s = s + "<span style='color:darkgray'>" + o.time + "</span> <b>" + o.val + "</b><br>";
+                    }
+                    document.getElementById("seznam").innerHTML = s;
+                });
+            });
+        }
+        function pridej() {
+            let v = Number(document.getElementById("hodnota").value);
+            let url = `${HOST}/add?value=${v}`;
+            fetch(url).then(function(response) {
+                response.text().then(function(text) {
+                });
+            });
+        }
+        function spustPoNacteni() {
+            setInterval(ukazSeznam, 1000);
+        }
+    </script>
+</head>
+<body onload="spustPoNacteni()">
+
+<h1>Příklad použití modulu <a href="https://github.com/liborsvejda/spaserver" target="_blank">spaserver</a></h1>
+
+<div id="seznam"></div>
+<input type="number" id="hodnota"><input type="button" value="Přidat" onclick="pridej()">
+
+</body>
+</html>
