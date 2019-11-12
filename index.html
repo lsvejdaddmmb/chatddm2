@@ -6,7 +6,10 @@
     <script>
         const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
         function ukazSeznam() {
-            let url = `${HOST}/list`;
+            let url = `${HOST}/shortlist`;
+            if (document.getElementById("celyseznam").checked) {
+                url = `${HOST}/list`;
+            }
             fetch(url).then(function(response) {
                 response.text().then(function(text) {
                     let obj = JSON.parse(text);
@@ -37,6 +40,7 @@
 
 <h1>Příklad použití modulu <a href="https://github.com/liborsvejda/spaserver" target="_blank">spaserver</a></h1>
 
+<input type="checkbox" id="celyseznam"> všechny zprávy
 <div id="seznam"></div>
 <input type="text" id="prezdivka" placeholder="SEM DEJ PREZDIVKU">
 <input type="text" id="zprava" placeholder="SEM DEJ ZPRAVU">

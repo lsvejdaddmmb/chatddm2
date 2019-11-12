@@ -17,6 +17,8 @@ function processApi(req, res) {
     obj.status = API_STATUS_OK;
     if (req.pathname === "/list") {
         obj.list = list;
+    } else if (req.pathname === "/shortlist") {
+        obj.list = list.slice(-3);
     } else if (req.pathname === "/add") {
         let addObj = {};
         let dt = new Date();
