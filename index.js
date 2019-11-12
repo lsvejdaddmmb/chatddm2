@@ -22,6 +22,7 @@ function processApi(req, res) {
         let dt = new Date();
         addObj.time = dateFormat(dt, "HH.MM.ss");
         addObj.val = req.parameters.value;
+        addObj.nick = req.parameters.nick;
         list.push(addObj);
     } else {
         obj.status = API_STATUS_NOT_FOUND;

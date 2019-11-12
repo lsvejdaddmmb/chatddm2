@@ -12,15 +12,17 @@
                     let obj = JSON.parse(text);
                     let s = "";
                     for (let o of obj.list) {
-                        s = s + "<span style='color:darkgray'>" + o.time + "</span> <b>" + o.val + "</b><br>";
+                        s = s + "<span style='color:darkgray; font-size:80%'>" + o.time + " " + o.nick + "</span><br><b>" + o.val + "</b><br>";
                     }
                     document.getElementById("seznam").innerHTML = s;
                 });
             });
         }
         function pridej() {
-            let v = Number(document.getElementById("hodnota").value);
-            let url = `${HOST}/add?value=${v}`;
+            let n = document.getElementById("prezdivka").value;
+            let v = document.getElementById("zprava").value;
+            document.getElementById("zprava").value = "";
+            let url = `${HOST}/add?value=${v}&nick=${n}`;
             fetch(url).then(function(response) {
                 response.text().then(function(text) {
                 });
@@ -36,7 +38,9 @@
 <h1>Příklad použití modulu <a href="https://github.com/liborsvejda/spaserver" target="_blank">spaserver</a></h1>
 
 <div id="seznam"></div>
-<input type="number" id="hodnota"><input type="button" value="Přidat" onclick="pridej()">
+<input type="text" id="prezdivka" placeholder="SEM DEJ PREZDIVKU">
+<input type="text" id="zprava" placeholder="SEM DEJ ZPRAVU">
+<input type="button" value="Přidat" onclick="pridej()">
 
 </body>
 </html>
