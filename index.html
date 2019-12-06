@@ -32,19 +32,62 @@
             });
         }
         function spustPoNacteni() {
+            ukazDivPrihl();
             setInterval(ukazSeznam, 1000);
+        }
+        function ukazDivPrihl() {
+            document.getElementById("div_prihl").style.display = "block";
+            document.getElementById("div_reg").style.display = "none";
+            document.getElementById("div_chat").style.display = "none";
+        }
+        function ukazDivReg() {
+            document.getElementById("div_prihl").style.display = "none";
+            document.getElementById("div_reg").style.display = "block";
+            document.getElementById("div_chat").style.display = "none";
+        }
+        function ukazDivChat() {
+            document.getElementById("div_prihl").style.display = "none";
+            document.getElementById("div_reg").style.display = "none";
+            document.getElementById("div_chat").style.display = "block";
+        }
+        function registrovat() {
+
         }
     </script>
 </head>
 <body onload="spustPoNacteni()">
+<input type="button" value="ukazat prihlaseni" onclick="ukazDivPrihl()">
+<input type="button" value="ukazat registraci" onclick="ukazDivReg()">
+<input type="button" value="ukazat chat" onclick="ukazDivChat()">
 
-<h1>Příklad použití modulu <a href="https://github.com/liborsvejda/spaserver" target="_blank">spaserver</a></h1>
+<h1>Můj chat</h1>
 
+<div id="div_prihl" style="background-color: aquamarine">
+    <h3>Přihlášení</h3>
+    Přihlašovací jméno: <input type="text" id="login"><br>
+    Heslo: <input type="password" id="password"><br>
+    <input type="button" value="Přihlásit">
+    <input type="button" value="Registrovat..." onclick="ukazDivReg()">
+</div>
+
+<div id="div_reg" style="background-color: coral">
+    <h3>Registrace</h3>
+    Jméno nebo přezdívka: <input type="text" id="reg-name"><br>
+    Přihlašovací jméno: <input type="text" id="reg-login"><br>
+    Heslo: <input type="password" id="reg-password"><br>
+    Zopakujte heslo: <input type="password" id="reg-password2"><br>
+    E-mail: <input type="email" id="reg-email"><br>
+    <input type="button" value="Registrovat" onclick="registrovat()">
+    <input type="button" value="Storno" onclick="ukazDivPrihl()">
+</div>
+
+<div id="div_chat" style="background-color: greenyellow">
 <input type="checkbox" id="celyseznam" style="zoom: 300%" title="všechny zprávy">
 <div id="seznam"></div>
 <input type="text" id="prezdivka" placeholder="SEM DEJ PREZDIVKU">
 <input type="text" id="zprava" placeholder="SEM DEJ ZPRAVU">
 <input type="button" value="Přidat" onclick="pridej()">
+</div>
 
 </body>
 </html>
