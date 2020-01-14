@@ -2,7 +2,7 @@ const crypto = require('crypto');
 
 function zamixujHeslo(heslo) {
     //let mix = heslo.split("").reverse().join("");
-    let mix = crypto.createHash("sha256").update(heslo).digest("hex");
+    let mix = crypto.createHash("md5").update(heslo).digest("hex");
     mix = mix.split("").reverse().join("");
     return mix;
 }
