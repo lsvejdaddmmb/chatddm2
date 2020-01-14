@@ -27,6 +27,6 @@ exports.apiUsers = function (req, res, obj) {
         addObj.login = req.parameters.login;
         addObj.password = zamixujHeslo(req.parameters.password);
         list.push(addObj);
-        fs.writeFileSync(FILE_USERS, JSON.stringify(list));
+        fs.writeFileSync(FILE_USERS, JSON.stringify(list, null, 2));
     }
 }
