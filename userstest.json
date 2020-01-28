@@ -1,0 +1,18 @@
+[
+  {
+    "login": "aaa",
+    "password": "aaaaaa"
+  },
+  {
+    "login": "bbb",
+    "password": "bbbbbb"
+  },
+  {
+    "login": "ccc",
+    "password": "cccccc"
+  },
+  {
+    "login": "ddd",
+    "password": "dddddd"
+  }
+]
